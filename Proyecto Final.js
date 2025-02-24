@@ -12,6 +12,12 @@ var casado_50 = 0.3
 
 var hijos_recargo = 0.2
 
+var propriedades_recargo = 0.35
+
+var ingresos_recargo = 0.05
+
+var cotización = 0
+
 //Recargo
 var recargo = 0
 var recargo_total = 0
@@ -84,10 +90,55 @@ else if(edad_conyuge_numero >= 50){
     recargo_total = recargo_total + recargo;
 }
 
+//Actividad Extra
+var propriedades = prompt("¿Tiene propriedades?");
+var cantidad_propriedades = 0;
+if("SI" == propriedades.toUpperCase()){
+    cantidad_propriedades = parseInt(prompt("¿Cuantas propriedades tiene?"));
+}
+//Convertimos la cantidad de propriedades a número
+var propriedades_numero = parseInt(propriedades);
+var propriedades_cantidad_propriedades_numero = 0;
+if("SI" == propriedades.toUpperCase()){
+    propriedades_cantidad_propriedades_numero = parseInt(cantidad_propriedades);
+}
+//Calculamos el recargo total basado en las respuestas ingresadas
+if("SI" == propriedades.toUpperCase()){
+    recargo = cantidad_propriedades * (precio_base * propriedades_recargo);
+    recargo_total = recargo_total + recargo;
+}
+
+var ingresos = prompt("¿Tiene ingresos?");
+var cantidad_ingresos = 0;
+if("SI" == ingresos.toUpperCase()){
+    cantidad_ingresos = parseInt(prompt("¿Cuantos ingresos tiene?"))
+}
+var ingresos_nuemero = parseInt(ingresos);
+var ingresos_cantidad_ingresos_numero = 0;
+if("SI" == ingresos.toUpperCase()){
+    ingresos_cantidad_ingresos_numero = parseInt(cantidad_ingresos);
+}
+if("SI" == ingresos.toUpperCase()){
+    recargo = cantidad_ingresos * (precio_base * ingresos_recargo);
+    recargo_total = recargo_total + recargo;
+}
+
 precio_final = precio_base + recargo_total;
-console.log("El precio final es: " + precio_final);
+console.log("El precio final es: "+ precio_final);
 
 alert ("Para el asegurado "+ nombre);
 alert ("El recargo total sera de: "+ recargo_total);
 alert ("El precio será de: "+ precio_final); 
 //Resultado 
+
+//Actividad Extra, creación de un bucle para que el usuario escriba salir para terminar el programa
+var nombre = prompt("Ingrese su nombre, por favor");
+while(nombre === ""){
+nombre = prompt("Ingrese su nombre, por favor");
+break;
+}
+var salir = prompt("Escriba salir para terminar el programa");
+while(salir != "salir"){
+    salir = prompt("Escriba salir para terminar el programa");
+    break;
+}
